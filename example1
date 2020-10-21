@@ -18,7 +18,8 @@ peoples.append(students)
 peoples.append(worker)
 peoples.append(things)
 
-print(peoples)
+# в списке people первые два элемента содержат словари, где ключом является имя человека, а значением является любимая его вещь. 
+# Последний элемент списка (thing) содержит словарь, где ключами является то, что любят некоторые люди из первых двух элементов списка people
 
 for people in peoples[:2]:
     for key,value in people.items():
