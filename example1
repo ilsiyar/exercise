@@ -1,0 +1,27 @@
+""" задача для создания списка из словарей и перебора значений"""
+peoples = []
+students = {
+    'Anna' : 'keks',
+    'Boris' : 'potatoes',
+    'Aleks' : 'carrot'
+    }
+worker = {
+    'Denis': 'table',
+    'Vasya': 'pc',
+    'ilya' : 'cat'
+    }
+things = {
+    'keks' : ['chocolate', 'strawberry', 'fruit' ],
+    'cat' : 'Ryzik'
+}
+peoples.append(students)
+peoples.append(worker)
+peoples.append(things)
+
+print(peoples)
+
+for people in peoples[:2]:
+    for key,value in people.items():
+        print (f"hello, {key}")
+        if value in things.keys():
+            print (f"{key} love {value} . it's {things[value]}")
