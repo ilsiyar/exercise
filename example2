@@ -1,0 +1,11 @@
+"""" перебор списка orders с удалением определенного элемента, и добавление элементов в новый список finish"""
+
+orders = ['det1', 'det2', 'det3', 'det4','det1' , 'det1']
+finish = []
+print (" Component det1 is not available for order")
+while 'det1' in orders:                     
+    orders.remove('det1')          #удаляем компонент det1 из списка 
+for det in orders:
+    print (f" You added {det}")
+    finish.append(det)             #добавляем все досупные компоненты в новый список
+print (finish)
