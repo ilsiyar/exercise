@@ -1,0 +1,30 @@
+import random
+import plotly
+
+value1 = 'red'
+value2 = 'black'
+c = 0.001
+win = 0
+loose = 0
+roulette = []
+startmoney = 1000_000
+while len(roulette) < 37:
+    roulette.append(value1)
+    roulette.append(value2)
+roulette.insert(13, 'zero')
+print(roulette)
+money = startmoney
+while money > 0 :
+    bet = money * c
+    if bet > money:
+        bet = money
+    money -= bet
+    x = random.choice(roulete)
+    if x == 'red':
+        win +=1
+        money = money + bet*2
+    else:
+        loose +=1
+    print (f" Количество проигрышей - {loose} ,"
+           f" Количество выигрышей - {win},"
+           f" Количество выигранных денег - {money} ")
