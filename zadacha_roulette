@@ -1,21 +1,26 @@
 import random
 import plotly
+import plotly.graph_objs as go
+
+""" Симулятор игры в рулетку. """
 
 value1 = 'red'
 value2 = 'black'
-c = 0.001
-win = 0
-loose = 0
-roulette = []
+c = 0.001               #минимальный процент по ставке
+win = 0                 #количество побед
+loose = 0               #количество проигрышей
+balance = []            #список для сбора статистики по балансу
+games = []              #список для сбора статистики по играм
+
+roulete = []            #список для значений для секторов
 startmoney = 1000_000
-while len(roulette) < 37:
-    roulette.append(value1)
-    roulette.append(value2)
-roulette.insert(13, 'zero')
-print(roulette)
+while len(roulete) < 36:
+    roulete.append(value1)
+    roulete.append(value2)
+roulete.insert(13, 'zero')
 money = startmoney
 while money > 0 :
-    bet = money * c
+    bet = startmoney * c
     if bet > money:
         bet = money
     money -= bet
@@ -25,6 +30,14 @@ while money > 0 :
         money = money + bet*2
     else:
         loose +=1
-    print (f" Количество проигрышей - {loose} ,"
-           f" Количество выигрышей - {win},"
-           f" Количество выигранных денег - {money} ")
+    balance.append(money)
+    games.append(len(games) + 1 )
+
+print (f" Количество проигрышей - {loose} ,"
+       f" Количество выигрышей - {win},"
+       f" Количество ставок - {loose+win}")
+
+fig = go.Figure()                                     #создание экземпляра фигуры
+fig.add_trace(go.Scatter( x=games, y=balance ))       #отрисовка графика
+fig.write_html('first_figure.html', auto_open=True)   #создание html-файла и автоматическое открытие его в браузере
+
